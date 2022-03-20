@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import Aux from '../../hoc/Aux/Aux';
+import Aux from '../../hoc/AuxFolder/AuxFile';
 import Match from './Match/Match';
 import axios from '../../axios-instance';
 import moment from 'moment';

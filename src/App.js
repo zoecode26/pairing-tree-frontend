@@ -7,8 +7,6 @@ import Logout from './containers/Auth/Logout/Logout';
 import Matches from './containers/Matches/Matches';
 import Messages from './containers/Messages/Messages';
 
-
-import './App.css';
 import Home from './components/Home/Home';
 import Profile from './containers/Profile/Profile';
 import axios from './axios-instance';

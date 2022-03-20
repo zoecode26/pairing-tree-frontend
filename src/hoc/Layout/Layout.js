@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import classes from './Layout.module.css';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
-import Aux from '../Aux/Aux';
+import Aux from '../AuxFolder/AuxFile';
 
 class Layout extends Component {
   render() {
