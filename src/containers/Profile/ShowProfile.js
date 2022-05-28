@@ -20,7 +20,6 @@ class ShowProfile extends Component {
     }
     axios.post('/profile/toggle-active/' + this.props.user.id, body)
       .then(response => {
-        console.log(response)
         const updatedUser = response.data; 
         this.props.saveUser(updatedUser);
         this.props.updateUser();
@@ -30,7 +29,6 @@ class ShowProfile extends Component {
   getLanguagePreferences = () => {
     axios.get('/languagepreferences/' + this.props.user.id)
       .then(response => {
-        console.log(response);
         const languagePreferences = response.data;
         this.setState({
           languagePreferences: languagePreferences
@@ -55,15 +53,13 @@ class ShowProfile extends Component {
       {this.props.user.active ? "Become Inactive" : "Become Active"}
     </Button>
     }
+
     return(
       <div>
         <h2> {this.props.user.fullName}'s Profile</h2><br></br>
-
         <p><strong>Github: </strong><a href={this.props.user.github} target="_blank">{this.props.user.fullName}'s Github</a></p>
-
         <p><strong>Languages:</strong></p>
         {languagePreferences}
-
         {toggleButton}
       </div>
     )

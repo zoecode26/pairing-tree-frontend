@@ -43,8 +43,7 @@ class Auth extends Component {
   sendSignupRequest = (body) => {
     const url = '/users/sign-up';
     axios.post(url, body)
-      .then(response => {
-        console.log("User created")
+      .then(() => {
         this.sendLoginRequest(body)
       })
   }

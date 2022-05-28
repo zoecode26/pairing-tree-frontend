@@ -14,10 +14,8 @@ class Profile extends Component {
   }
 
   setUser = () => {
-    console.log(this.props.match.params.id)
-    console.log(this.props.current_user.id)
     //if user is viewing their own profile, use details already stored in app
-    if(this.props.match.params.id == this.props.current_user.id) {
+    if(this.props.match.params.id === this.props.current_user.id) {
       this.setState({
         user: this.props.current_user,
         isCurrentUser: true
@@ -25,7 +23,6 @@ class Profile extends Component {
     } else {
       axios.get('/users/' + this.props.match.params.id)
         .then(response => {
-          console.log(response)
           const user = response.data;
           this.setState({
             user: user,
@@ -33,7 +30,6 @@ class Profile extends Component {
           })
         })
     }
-    //otherwise send request to get user details
   }
 
   render() {

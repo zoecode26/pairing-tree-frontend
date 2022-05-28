@@ -21,7 +21,6 @@ class Matches extends Component {
     const url = '/matches';
     axios.get(url)
       .then(response => {
-        console.log(response);
         this.setState({
           matches: response.data,
           loaded: true
@@ -33,16 +32,14 @@ class Matches extends Component {
     const url = '/matches';
     let body = {}
     axios.post(url, body)
-      .then(response => {
-        console.log(response);
+      .then(() => {
         this.getMatches();
       })
   }
 
   completeMatch = (match_id) => {
     axios.post('/matches/complete/' + match_id)
-      .then(response => {
-        console.log(response)
+      .then(() => {
         this.getMatches();
       })
   }
@@ -59,15 +56,20 @@ class Matches extends Component {
         matches = <p>You don't have any matches at the moment. Check back soon!</p>
       } else {
         matches = this.state.matches.map(match => {
-          return <Match 
-                    key={match.id}
-                    id={match.id}
-                    user1={match.user1}
-                    user2={match.user2}
-                    language={match.language.name}
-                    startTime={this.formatDate(match.start_time)} 
-                    complete={match.complete} 
-                    completeMatch={this.completeMatch}/>
+          let current_user_id = this.props.current_user.id
+          let user1_id = match.user1.id
+          let user2_id = match.user2.id
+          if (!match.complete && (current_user_id === user1_id || current_user_id === user2_id)) {
+            return <Match 
+                      key={match.id}
+                      id={match.id}
+                      user1={match.user1}
+                      user2={match.user2}
+                      language={match.language.name}
+                      startTime={this.formatDate(match.start_time)} 
+                      complete={match.complete} 
+                      completeMatch={this.completeMatch}/>
+          }
         })
       } 
     }

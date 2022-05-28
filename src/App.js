@@ -70,13 +70,6 @@ class App extends Component {
     );
   }
 
-  testJWT = () => {
-    axios.get('/test')
-      .then(response => {
-        console.log(response);
-      })
-  }
-
   logout = () => {
     this.setState({
       jwt: null
@@ -89,10 +82,8 @@ class App extends Component {
     if(this.state.loaded) {
       routes = (
         <Switch>
-          <Route path="/auth" render={(props) => <Auth 
-                                                    {...props} 
-                                                    saveUser={this.saveUser}
-                                                    saveJWT={this.saveJWT} />} />
+          <Route path="/auth" render={(props) => 
+            <Auth {...props} saveUser={this.saveUser} saveJWT={this.saveJWT} />} />
           <Redirect to="/auth" />
         </Switch>
       )
@@ -105,7 +96,7 @@ class App extends Component {
           <Route path="/matches" render={(props) => <Matches {...props} current_user={this.state.user} jwt={this.state.jwt}/>} />
           <Route path="/profile/:id" render={(props) => <Profile {...props} current_user={this.state.user} saveUser={this.saveUser} />} />
           <Route path="/messages" render={(props) => <Messages {...props} current_user={this.state.user} />} />
-          <Route path="/" exact render={(props) => <Home {...props} testJWT={this.testJWT} current_user={this.state.user} />} />
+          <Route path="/" exact render={(props) => <Home {...props} current_user={this.state.user} />} />
           <Redirect to="/" />
         </Switch>
       )
