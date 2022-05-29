@@ -49,7 +49,7 @@ class Auth extends Component {
   }
 
   sendLoginRequest = (body) => {
-    const url = 'http://localhost:8080/login';
+    const url = '/login';
     axios.post(url, body)
       .then(response => {
         const jwt = response.headers.authorization.split(" ")[1];
