@@ -22,7 +22,6 @@ class Auth extends Component {
     event.preventDefault();
     
     if(this.state.isSignUp) {
-      //all the names are mixed up to make backend work, sorry
       const body = {
         fullName: this.state.username,
         username: this.state.email,
