@@ -62,8 +62,7 @@ class Messages extends Component {
     }
     if(unreadMessages.length > 0) {
       axios.post('/messages/unread', body)
-      .then(response => {
-        console.log(response);
+      .then(() => {
         this.getMessages();
       })
     }

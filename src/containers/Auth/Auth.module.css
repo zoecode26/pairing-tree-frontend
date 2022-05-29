@@ -28,9 +28,3 @@ input:focus {
   border: 1px solid red;
   background-color: #FDA494;
 }
-
-/* @media (min-width: 600px) {
-  .Auth {
-    width: 500px;
-  }
-} */

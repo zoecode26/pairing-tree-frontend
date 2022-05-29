@@ -49,11 +49,10 @@ class Auth extends Component {
   }
 
   sendLoginRequest = (body) => {
-    const url = '/login';
+    const url = 'http://localhost:8080/hello';
     axios.post(url, body)
       .then(response => {
         const jwt = response.headers.authorization.split(" ")[1];
-        console.log(jwt);
         this.props.saveJWT(jwt);
         const id = response.data
         axios.get('/users/' + id)

@@ -16,15 +16,13 @@ class SendMessage extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    console.log(this.state.content);
     const body = {
       sender_id: this.props.sender.id,
       receiver_id: this.props.receiver.id,
       content: this.state.content
     }
     axios.post("/messages", body)
-      .then(response => {
-        console.log(response);
+      .then(() => {
         this.setState({
           content: ""
         })

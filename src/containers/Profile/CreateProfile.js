@@ -27,8 +27,6 @@ class CreateProfile extends Component {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
-    console.log(name)
-    console.log(value)
     this.setState({
       [name]: value
     });
@@ -51,12 +49,9 @@ class CreateProfile extends Component {
     }
     //remove languages array
     delete body["languages"]
-    console.log(body)
     axios.post('/profile/' + this.props.user.id, body)
       .then(response => {
-        console.log(response)
         const updatedUser = response.data
-        /////////
         this.props.saveUser(updatedUser)
         this.props.setUser();
       })
@@ -64,7 +59,6 @@ class CreateProfile extends Component {
 
   render() {
     let languageInputs = <Spinner />;
-
     if(this.state.languages) {
       //make each language into a select input
       languageInputs = this.state.languages.map(language => {
